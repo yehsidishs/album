@@ -1,0 +1,32 @@
+# === Сборка артефактов (скомпилированный вывод) ===
+dist/
+server/public/
+
+# === Зависимости ===
+node_modules/
+
+# === Vite / шум инструмента ===
+vite.config.ts.*
+
+# === Архивы / комплекты ===
+*.tar.gz
+
+# === Переменные окружения ===
+.env
+.env.*
+!.env.example
+
+# === Учетные данные и конфиденциальные файлы ===
+*.pem
+*.key
+*.p12
+*.p8
+*.crt
+*service-account*.json
+*firebase*.json
+*google*.json
+cookies*.txt
+attached_assets/
+
+# === OS / редактор барахла ===
+.DS_Store

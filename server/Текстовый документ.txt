@@ -1,0 +1,16 @@
+import type { Request, Response, NextFunction } from 'express';
+import { verifyJwt } from './jwt';
+
+export function requireJwt(req: Request, res: Response, next: NextFunction) {
+  const header = req.headers.authorization || '';
+  const bearer = header.startsWith('Bearer ') ? header.slice(7) : undefined;
+  const token = bearer;
+  if (!token) return res.status(401).json({ message: 'Missing token' });
+
+  try {
+    (req as any).auth = verifyJwt(token);
+    next();
+  } catch {
+    res.status(401).json({ message: 'Invalid token' });
+  }
+}
